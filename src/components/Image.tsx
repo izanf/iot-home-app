@@ -1,14 +1,14 @@
-import React from 'react'
 import styled from 'styled-components'
 
 interface ImageProps {
   src: string
   avatar: true
-  size?: 'sm' | 'md' | 'lg'
+  size?: number
 }
 
 const Figure = styled.figure<Omit<ImageProps, 'src'>>(({ avatar, size }) => `
   width: ${size}px;
+  height: ${size}px;
   ${avatar ? 'border-radius: 100%;' : ''}
   overflow: hidden;
 `)
@@ -19,7 +19,7 @@ const Img = styled.img`
   object-fit: cover;
 `
 
-const Image = ({ avatar, size = 'md', ...props }: ImageProps) => (
+const Image = ({ avatar, size = 64, ...props }: ImageProps) => (
   <Figure avatar={avatar} size={size}>
     <Img {...props} />
   </Figure>

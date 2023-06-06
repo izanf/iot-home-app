@@ -1,6 +1,10 @@
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
+  body {
+    background: ${({ theme }) => theme.colors.whisper};
+  }
+
   h1 {
     font-size: 2rem;
   }
