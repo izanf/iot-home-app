@@ -51,7 +51,7 @@ const Label = styled.label`
 `
 
 interface ISwitch {
-  value: boolean
+  value?: boolean
   onChange: (value: boolean) => void
 }
 
@@ -67,7 +67,7 @@ const Switch = ({ value, onChange }: ISwitch) => {
 
   return (
     <Label>
-      <input type="checkbox" checked={status} onChange={handleChange} />
+      <input type="checkbox" checked={value ?? status} onChange={handleChange} />
       <span className="slider round"></span>
     </Label>
   )

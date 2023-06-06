@@ -1,20 +1,30 @@
-import { useState } from 'react'
-import { doc, setDoc } from 'firebase/firestore'
+import { useState, useEffect } from 'react'
 import { Box, Switch, Text } from 'components'
 import { BsLightbulb, BsLightbulbOff } from 'react-icons/bs'
 
-import db from 'services/firebase'
+import { ref, onValue } from 'firebase/database'
+import db, { setValue } from 'services/firebase'
 
 const Space = () => {
   const [status, setStatus] = useState<boolean>(false)
   const Icon = status ? BsLightbulb : BsLightbulbOff
 
-  const handleChange = async (value: boolean): Promise<void> => {
+  const handleChange = async (value: boolean) => {
     setStatus(value)
-    await setDoc(doc(db, 'lights', 'bedroom'), {
-      value
+    await setValue('lights', 'bedroom', value)
+  }
+
+  const getValue = () => {
+    const objRef = ref(db, 'lights/bedroom')
+
+    onValue(objRef, (snapshot) => {
+      const data = snapshot.val()
+
+      setStatus(data)
     })
   }
+
+  useEffect(getValue, [])
 
   return (
     <Box
