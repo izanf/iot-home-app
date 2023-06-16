@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import Profile from './Profile/Profile'
-import Spaces from './Spaces/Spaces'
+import Spaces from './Spaces/Rooms'
 
 const Wrapper = styled.div``
 
