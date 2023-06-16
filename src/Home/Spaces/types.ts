@@ -1,10 +1,13 @@
-export type Entity = {
+export type EntityType = {
   status: boolean,
-  level?: number
+  level?: number,
+  type: string,
+  icon: string
 }
 
 export interface RoomProps {
   data: {
-    [entity: string]: Entity
-  }
+    [entity: string]: EntityType
+  },
+  roomName: string
 }

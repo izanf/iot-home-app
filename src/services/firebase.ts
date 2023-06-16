@@ -7,9 +7,7 @@ const app = initializeApp(firebaseConfig)
 
 const database = getDatabase(app)
 
-type ValueType = string | number | boolean
-
-export const setValue = async (collection: string, document: string, value: ValueType) => {
+export const setValue = async (collection: string, document: string, value: any) => {
   await set(ref(database, `${collection}/${document}`), value)
 }
 

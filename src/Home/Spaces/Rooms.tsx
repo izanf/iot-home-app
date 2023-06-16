@@ -24,7 +24,7 @@ const Rooms = () => {
   return (
     <Tabs tabs={roomsArray}>
       {roomsArray.map((room: string, index: number) => (
-        <Room key={index} data={data[room]} />
+        <Room key={index} data={data[room]} roomName={room} />
       ))}
     </Tabs>
   )
