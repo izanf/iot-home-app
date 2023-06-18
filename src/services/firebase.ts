@@ -7,8 +7,8 @@ const app = initializeApp(firebaseConfig)
 
 const database = getDatabase(app)
 
-export const setValue = async (collection: string, document: string, value: any) => {
-  await set(ref(database, `${collection}/${document}`), value)
+export const setValue = async (path: string[], value: boolean) => {
+  await set(ref(database, `rooms/${path.join('/')}/status`), value)
 }
 
 export default database

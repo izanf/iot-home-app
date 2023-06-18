@@ -1,9 +1,9 @@
-import type { RoomProps } from './types'
+import type { RoomProps } from '../../types/types'
 
 import { Box } from 'components'
 import Entity from './Entity'
 
-const Room = ({ data, roomName }: RoomProps) => {
+const Room = ({ data, handleChange }: RoomProps) => {
   const entities = Object.keys(data)
 
   return (
@@ -15,7 +15,7 @@ const Room = ({ data, roomName }: RoomProps) => {
       p="1.5rem 1rem"
     >
       {entities.map((entity: string, index: number) => (
-        <Entity key={index} data={data[entity]} name={entity} roomName={roomName} />
+        <Entity key={index} data={data[entity]} name={entity} handleChange={handleChange} />
       ))}
     </Box>
   )

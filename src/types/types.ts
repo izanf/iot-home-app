@@ -9,5 +9,5 @@ export interface RoomProps {
   data: {
     [entity: string]: EntityType
   },
-  roomName: string
+  handleChange: (entity: string, value: boolean) => void
 }

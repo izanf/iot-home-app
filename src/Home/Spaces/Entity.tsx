@@ -1,23 +1,21 @@
 import * as Icons from 'react-icons/fa'
 
-import { setValue } from 'services/firebase'
-
-import type { EntityType } from './types'
+import type { EntityType } from '../../types/types'
 
 import { Box, Switch, Text } from 'components'
 
 interface EntityProps {
   data: EntityType
   name: string
-  roomName: string
+  handleChange: (entity: string, value: boolean) => any
 }
 
-const Entity = ({ data, name, roomName }: EntityProps) => {
+const Entity = ({ data, name, handleChange }: EntityProps) => {
   const { status, icon } = data
   const Icon = (Icons as any)[icon]
 
-  const handleChange = async (status: boolean) => {
-    await setValue('rooms', `${roomName}/${name}`, { status, type: 'toggle', icon: 'FaLightbulb' })
+  const handleValue = (value: boolean) => {
+    handleChange(name, value)
   }
 
   return (
@@ -28,7 +26,7 @@ const Entity = ({ data, name, roomName }: EntityProps) => {
     >
       <Box display="flex" justifyContent="space-between" pb="2rem">
         <Icon />
-        <Switch value={status} onChange={handleChange} />
+        <Switch value={status} onChange={handleValue} />
       </Box>
       <Text>{name}</Text>
     </Box>

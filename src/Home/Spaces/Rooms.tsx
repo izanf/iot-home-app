@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import db from 'services/firebase'
+import db, { setValue } from 'services/firebase'
 import { ref, onValue } from 'firebase/database'
 
 import { Tabs } from 'components'
@@ -19,12 +19,16 @@ const Rooms = () => {
     })
   }
 
+  const handleChange = (room: string) => async (entity: string, value: boolean) => {
+    await setValue([room, entity], value)
+  }
+
   useEffect(getValue, [])
 
   return (
     <Tabs tabs={roomsArray}>
       {roomsArray.map((room: string, index: number) => (
-        <Room key={index} data={data[room]} roomName={room} />
+        <Room key={index} data={data[room]} handleChange={handleChange(room)} />
       ))}
     </Tabs>
   )
