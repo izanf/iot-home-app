@@ -1,4 +1,4 @@
-import * as Icons from 'react-icons/fa'
+import * as Icons from 'react-icons/bs'
 
 import type { EntityType } from '../../types/types'
 
@@ -15,7 +15,7 @@ interface EntityProps {
 
 const Entity = ({ data, name, handleChange }: EntityProps) => {
   const { status, icon, type, level } = data
-  const Icon = (Icons as any)[icon]
+  const Icon = (Icons as any)[icon] ?? Icons.BsQuestion
   const selectedEntity = (entities as any)[type]
   const EntityComponent = (Components as any)[selectedEntity ?? 'Switch']
 
