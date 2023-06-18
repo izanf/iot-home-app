@@ -28,9 +28,14 @@ const Entity = ({ data, name, handleChange }: EntityProps) => {
       background="white"
       borderRadius=".5rem"
       p="1rem"
+      display="flex"
+      flexDirection="column"
+      justifyContent="space-between"
+      mx=".5rem"
+      mb="1rem"
     >
       <Box display="flex" justifyContent="space-between" pb="2rem">
-        <Icon />
+        <Icon size="1.5rem" />
         <EntityComponent value={status} level={level} onChange={handleValue} />
       </Box>
       <Text>{name.split('_').join(' ')}</Text>
