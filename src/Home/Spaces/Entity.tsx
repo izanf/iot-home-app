@@ -2,7 +2,10 @@ import * as Icons from 'react-icons/fa'
 
 import type { EntityType } from '../../types/types'
 
-import { Box, Switch, Text } from 'components'
+import { Box, Text } from 'components'
+import * as Components from 'components'
+
+import entities from './entities'
 
 interface EntityProps {
   data: EntityType
@@ -11,8 +14,10 @@ interface EntityProps {
 }
 
 const Entity = ({ data, name, handleChange }: EntityProps) => {
-  const { status, icon } = data
+  const { status, icon, type, level } = data
   const Icon = (Icons as any)[icon]
+  const selectedEntity = (entities as any)[type]
+  const EntityComponent = (Components as any)[selectedEntity ?? 'Switch']
 
   const handleValue = (value: boolean) => {
     handleChange(name, value)
@@ -26,9 +31,9 @@ const Entity = ({ data, name, handleChange }: EntityProps) => {
     >
       <Box display="flex" justifyContent="space-between" pb="2rem">
         <Icon />
-        <Switch value={status} onChange={handleValue} />
+        <EntityComponent value={status} level={level} onChange={handleValue} />
       </Box>
-      <Text>{name}</Text>
+      <Text>{name.split('_').join(' ')}</Text>
     </Box>
   )
 }

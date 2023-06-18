@@ -30,7 +30,7 @@ const Label = styled.label`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: ${({ theme }) => theme.colors.whisper};
     -webkit-transition: .2s;
     transition: .2s;
     border-radius: 28px;
