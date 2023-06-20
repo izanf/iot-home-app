@@ -12,7 +12,8 @@ const colors = {
   whisper: '#E5E5E5',
   charcoal: '#464646',
   silver: '#BDBDBD',
-  white: '#FFFFFF'
+  white: '#FFFFFF',
+  primary: '#6EADFC'
 }
 
 export default {
